@@ -3,5 +3,5 @@ Permasalahan yang dihadapi
 
  - pengisiian username bisa melakukan spasi contoh : user_name
  - pada bagian login ,saat menekan tombol login walaupun belum mengisi username dan passowrd system dapat login    dengan sukses 
- - cara menampilkan laporan keuangan berupa chart
+ - bagaimana menampilkan laporan keuangan berupa chart
  - pada saat mengisi notelp angka 0 tidak terbaca di mysql
