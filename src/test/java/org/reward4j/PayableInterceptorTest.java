@@ -13,7 +13,7 @@ import static org.easymock.classextension.EasyMock.*;
 
 /**
  *
- * @author Peter Kehren <mailto:kehren@eyeslide.de>
+ * @author arief anwar
  */
 public class PayableInterceptorTest {
 
@@ -24,7 +24,8 @@ public class PayableInterceptorTest {
 
     RewardService rewardService = createMock(RewardService.class);
     rewardService.payForAction(new Coin(10), "testAction", user);
-    expectLastCall().times(1); // payForAction must be called at least once
+    expectLastCall().times(1); // payForAction harus dipanggil minimal sekali
+    
     replay(rewardService);
 
     UserResolver userResolver = createMock(UserResolver.class);
@@ -50,7 +51,7 @@ public class PayableInterceptorTest {
   }
 
   /**
-   * A simple class for testing purposes.
+   * untuk mngetest class
    */
   private class PayableTestSupport {
     @Payable(action = "testAction", coins = 10)
