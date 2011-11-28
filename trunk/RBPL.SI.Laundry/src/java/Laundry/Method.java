@@ -73,4 +73,29 @@ public class Method {
         return ubaru;
     }
 
+    public boolean cekLogin(String username, String password){
+        boolean result = true;
+        try {
+            con = connect.getKoneksi();
+            st = con.createStatement();
+            rs = st.executeQuery("select count(*) as jumlah from data_pelanggan where username='" + username + "' and password='" + password + "'");
+            rs.next();
+            int jumlah = rs.getInt("jumlah");
+            if (jumlah == 0) {
+                return false;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            try {
+                st.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return result;
+    }
+
 }
