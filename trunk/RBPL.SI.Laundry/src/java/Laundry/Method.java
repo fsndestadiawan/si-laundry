@@ -98,4 +98,39 @@ public class Method {
         return result;
     }
 
+    public boolean tambahorder(String noorder, String paketorder,
+            String waktuambil, String alamatambil) {
+        boolean result = true;
+
+
+        order obaru = new order();
+        obaru.setNoorder(noorder);
+        obaru.setPaketorder(paketorder);
+        obaru.setWaktuambil(waktuambil);
+        obaru.setAlamatambil(alamatambil);
+
+
+       // hash.put(username, ubaru);
+
+        String sql = "INSERT INTO order_baru VALUES ('" + noorder + "','" + paketorder + "','" + waktuambil + "','" + alamatambil + "');";
+
+
+        try {
+            con = connect.getKoneksi();
+            st = con.createStatement();
+            st.execute(sql);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+
+        } finally {
+            try {
+                st.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return result;
+    }
 }
