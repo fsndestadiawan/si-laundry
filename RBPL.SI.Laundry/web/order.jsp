@@ -91,6 +91,10 @@ a:active {
     String a = request.getParameter("status");
     if (a != null){
     out.println("isi Kolom  terlebih dahulu xist or check required field.");
+
+    String b = request.getParameter("status2");
+    if (b != null){
+    out.println("Transaksi berhasil");
     }
 
 %>

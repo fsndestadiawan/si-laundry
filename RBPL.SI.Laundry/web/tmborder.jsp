@@ -12,12 +12,12 @@
 
         Laundry.Method order = new Laundry.Method();
         if(noorder == "" || paketorder== "" || waktuambil=="" || alamatambil == ""){
-            response.sendRedirect("index.jsp?status=1");
+            response.sendRedirect("order.jsp?status=1");
 
         }else{
 
         order.tambahorder(noorder, paketorder, waktuambil, alamatambil);
-        response.sendRedirect("hellow.jsp");
+        response.sendRedirect("order.jsp?status2=1");
         }
 
     %>
