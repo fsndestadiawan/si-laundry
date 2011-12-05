@@ -1,6 +1,6 @@
-<%--
-    Document   : home
-    Created on : 12 Nov 11, 16:50:46
+<%-- 
+    Document   : ProfilPelanggan
+    Created on : 06 Des 11, 5:15:20
     Author     : Andead
 --%>
 
@@ -23,6 +23,13 @@
                 <td><a href="order.jsp">Transaksi</a></td>
                 <td><a href="ProfilPelanggan">Profil</a></td>
                 <td><a href="">Reward</a></td>
+            </tr>
+            <%
+            Laundry.Pelanggan biodata = new Laundry.Pelanggan();
+            %>
+            <tr>
+                <td align="right">Nama</td>
+                <td align="left"><% biodata.getNama(); %>
             </tr>
         </table>
     </body><body>
