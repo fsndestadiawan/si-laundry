@@ -1,5 +1,5 @@
 <%--
-    Document   : index
+    Document   : Order
     Created on : Nov 14, 2011, 8:59:08 PM
     Author     : Achmad
 --%>
@@ -9,7 +9,7 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-    <head>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Welcome</title>
 <link href="theCSS.css" rel="stylesheet" type="text/css" />
@@ -42,14 +42,19 @@ a:active {
 .style8 {color: #FFFFFF; }
 -->
 
-</style></head>
+</style>
+</head>
 
 <body>
 <div class="body" id="main">
   <div class="style4" id="logo"></div>
   <div id="menu">
     <div align="center">
-      <p><a href="addorder.jsp"><span class="style6">Home</span></a> <span class="style7">
+      <p><a href="tmborder.jsp">
+              <span class="style6">Home</span>
+          </a>
+      </p>
+      <span class="style7"></span>
       <hr />
       <br />
     </div>
@@ -88,16 +93,16 @@ a:active {
           </tr>
       </table>
         <%
-    String a = request.getParameter("status");
-    if (a != null){
-    out.println("isi Kolom  terlebih dahulu xist or check required field.");
+            String a = request.getParameter("status");
+            if (a != null){
+            out.println("isi Kolom  terlebih dahulu xist or check required field.");
+            }
+            String b = request.getParameter("status2");
+            if (b != null){
+            out.println("Transaksi berhasil");
+            }
 
-    String b = request.getParameter("status2");
-    if (b != null){
-    out.println("Transaksi berhasil");
-    }
-
-%>
+        %>
     </FORM>
 </div>
   <div id="footer">
