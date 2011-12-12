@@ -1,14 +1,11 @@
 <%-- 
-    Document   : MelihatPelanggan
-    Created on : Nov 14, 2011, 11:57:49 AM
+    Document   : edit
+    Created on : Dec 12, 2011, 11:27:29 AM
     Author     : dika
 --%>
 
-<%@ page import="java.sql.*" %>
-<html>
-<head>
-</head>
-<body>
+<%@page language="java"%>
+<%@page import="java.sql.*"%>
 <style type="text/css">
 <!--
 body {
@@ -150,49 +147,33 @@ input.small {
 
 -->
 </style>
-<br><br>
-<form method="post" name="form">
-<table border="1" align="center">
-<tr><th>Name</th><th>alamat</th><th>Notelp</th><th>username</th></tr>
+<form method="post" action="update.jsp">
+<table border="1">
+<tr><th>username</th><th>password</th><th>nama</th><th>alamat</th><th>notelp</th></tr>
 <%
-Connection con = null;
-String url = "jdbc:mysql://localhost/";
-String db = "rahasia";
-String driver = "com.mysql.jdbc.Driver";
-String userName ="root";
-String password="";
-
-int sumcount = 0;
-Statement st;
-try{
-Class.forName(driver).newInstance();
-con = DriverManager.getConnection("jdbc:mysql://localhost/rahasia","root", "");
-String query = "select * from data_pelanggan";
-st = con.createStatement();
+String id=request.getParameter("id");
+int no=Integer.parseInt(id);
+int sumcount=0;
+try {
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/student","root", "");
+String query = "select * from data_pelanggan where id='"+no+"'";
+Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
-%>
-
-<%
 while(rs.next()){
 %>
 <tr>
-<td><%=rs.getString("nama")%></td>
-<td><%=rs.getString("alamat")%></td>
-<td><%=rs.getString("notelp")%></td>
-<td><%=rs.getString("username")%></td>
-<td><a href="edit_pelanggan.jsp">Edit</a></td>
-<td><a href="delete.jsp">Delete</a></td>
+<td><input type="text" name="username" value="<%=rs.getString("username")%>"></td>
+<td><input type="text" name="password" value="<%=rs.getString("password")%>"></td>
+<td><input type="text" name="nama" value="<%=rs.getString("nama")%>"></td>
+<td><input type="text" name="alamat" value="<%=rs.getString("alamat")%>"></td>
+<td><input type="text" name="notelp" value="<%=rs.getString("notelp")%>"></td>
+<td><input type="submit" name="Submit" value="Update" style="background-color:#49743D;font-weight:bold;color:#ffffff;"></td>
 </tr>
 <%
 }
-%>
-<%
 }
-catch(Exception e){
-e.printStackTrace();
-}
+catch(Exception e){}
 %>
 </table>
 </form>
-</body>
-</html>

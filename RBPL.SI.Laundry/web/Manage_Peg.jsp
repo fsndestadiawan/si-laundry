@@ -1,12 +1,26 @@
 <%-- 
-    Document   : MelihatPelanggan
-    Created on : Nov 14, 2011, 11:57:49 AM
+    Document   : Manage_Peg
+    Created on : Dec 12, 2011, 11:23:31 AM
     Author     : dika
 --%>
 
 <%@ page import="java.sql.*" %>
 <html>
 <head>
+<script language="javascript">
+function editRecord(id){
+    var f=document.form;
+    f.method="post";
+    f.action='edit.jsp?id='+id;
+    f.submit();
+}
+function deleteRecord(id){
+    var f=document.form;
+    f.method="post";
+    f.action='delete.jsp?id='+id;
+    f.submit();
+}
+</script>
 </head>
 <body>
 <style type="text/css">
@@ -152,22 +166,22 @@ input.small {
 </style>
 <br><br>
 <form method="post" name="form">
-<table border="1" align="center">
-<tr><th>Name</th><th>alamat</th><th>Notelp</th><th>username</th></tr>
+<table border="1">
+<tr><th>Name</th><th>Address</th><th>Contact No</th><th>password No</th><th>ussername</th></tr>
 <%
 Connection con = null;
 String url = "jdbc:mysql://localhost/";
 String db = "rahasia";
 String driver = "com.mysql.jdbc.Driver";
 String userName ="root";
-String password="";
+String password="root";
 
 int sumcount = 0;
 Statement st;
 try{
 Class.forName(driver).newInstance();
 con = DriverManager.getConnection("jdbc:mysql://localhost/rahasia","root", "");
-String query = "select * from data_pelanggan";
+String query = "select * from data_pegawai";
 st = con.createStatement();
 ResultSet rs = st.executeQuery(query);
 %>
@@ -175,13 +189,13 @@ ResultSet rs = st.executeQuery(query);
 <%
 while(rs.next()){
 %>
-<tr>
-<td><%=rs.getString("nama")%></td>
-<td><%=rs.getString("alamat")%></td>
-<td><%=rs.getString("notelp")%></td>
-<td><%=rs.getString("username")%></td>
-<td><a href="edit_pelanggan.jsp">Edit</a></td>
-<td><a href="delete.jsp">Delete</a></td>
+<tr><td><%=rs.getString(2)%></td>
+<td><%=rs.getString(3)%></td>
+<td><%=rs.getString(4)%></td>
+<td><%=rs.getString(5)%></td>
+<td><%=rs.getString(6)%></td>
+<td><input type="button" name="edit" value="Edit" style="background-color:#49743D;font-weight:bold;color:#ffffff;" onclick="editRecord(<%=rs.getString(1)%>);" ></td>
+<td><input type="button" name="delete" value="Delete" style="background-color:#ff0000;font-weight:bold;color:#ffffff;" onclick="deleteRecord(<%=rs.getString(1)%>);" ></td>
 </tr>
 <%
 }
