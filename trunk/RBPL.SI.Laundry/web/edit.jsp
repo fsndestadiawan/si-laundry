@@ -156,8 +156,8 @@ int no=Integer.parseInt(id);
 int sumcount=0;
 try {
 Class.forName("com.mysql.jdbc.Driver").newInstance();
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/student","root", "");
-String query = "select * from data_pelanggan where id='"+no+"'";
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/rahasia","root", "");
+String query = "select * from data_pegawai where id='"+no+"'";
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
 while(rs.next()){
