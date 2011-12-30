@@ -133,4 +133,39 @@ public class Method {
         }
         return result;
     }
+
+     public boolean tambahpaketlaundry(String namapaket, String harga, String keterangan) {
+        boolean result = true;
+
+
+        paketlaundry pbaru = new paketlaundry();
+        pbaru.setNamapaket(namapaket);
+        pbaru.setHarga(harga);
+        pbaru.setKeterangan(keterangan);
+
+
+     
+
+        String sql = "INSERT INTO paketlaundry VALUES ('" + namapaket + "','" + harga + "','" + keterangan + "');";
+
+
+        try {
+            con = connect.getKoneksi();
+            st = con.createStatement();
+            st.execute(sql);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+
+        } finally {
+            try {
+                st.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return result;
+    }
+
 }
