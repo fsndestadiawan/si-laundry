@@ -1,6 +1,6 @@
 <%--
-    Document   : Order
-    Created on : Nov 14, 2011, 8:59:08 PM
+    Document   : paketlaundry
+    Created on : Des 30, 2011, 5:54:08 PM
     Author     : Achmad
 --%>
 
@@ -161,7 +161,7 @@ input.small {
   <div class="style4" id="logo"></div>
   <div id="menu">
     <div align="center">
-      <p><a href="tmborder.jsp">
+      <p><a href="tmbpaketlaundry.jsp">
               <span class="style6">Home</span>
           </a>
       </p>
@@ -172,30 +172,24 @@ input.small {
   </div>
   <div id="judul">Home</div><br />
   <div id="konten">
-    <FORM METHOD=POST ACTION="tmborder.jsp">
+    <FORM METHOD=POST ACTION="tmbpaketlaundry.jsp">
         <p></p>
         <table width="327" border="0">
           <tr>
-            <td width="98">Nomor Order*</td>
+            <td width="98">Nama Paket*</td>
             <td width="219">:
-            <input name="noorder" type="varchar"  />   </td>
+            <input name="namapaket" type="varchar"  />   </td>
           </tr>
           <tr>
-            <td>Paket Order*</td>
+            <td>Harga*</td>
             <td>:
-            <input name="paketorder" type="text"  /></td>
+            <input name="harga" type="varchar"  /></td>
           </tr>
           <tr>
-            <td>Waktu Ambil*</td>
+            <td>Keterangan*</td>
             <td>:
-            <input name="waktuambil" type="text" /></td>
+            <input name="keterangan" type="varchar" /></td>
           </tr>
-             <tr>
-            <td>Alamat Ambil*</td>
-            <td>:
-            <input name="alamatambil" type="text" /></td>
-          </tr>
-
           <tr>
             <td colspan="2"><div align="center">
               <input type="submit" name="submit" value="Submit" />
@@ -204,15 +198,14 @@ input.small {
           </tr>
       </table>
         <%
-            String a = request.getParameter("status");
+            String a = request.getParameter("statusa");
             if (a != null){
             out.println("data belum lengkap");
             }
-            String b = request.getParameter("status2");
+            String b = request.getParameter("statusb");
             if (b != null){
-            out.println("Order telah berhasil dilaksanakan");
+            out.println("Paket berhasil diisi");
             }
-
         %>
     </FORM>
 </div>
