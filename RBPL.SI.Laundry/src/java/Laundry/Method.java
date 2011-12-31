@@ -134,19 +134,21 @@ public class Method {
         return result;
     }
 
-     public boolean tambahpaketlaundry(String namapaket, String harga, String keterangan) {
+//     public boolean tambahpaket(String namapaket, String harga, String keterangan) {
+   public boolean tambahpaket(paketlaundry paketLaundry) {
         boolean result = true;
 
 
-        paketlaundry pbaru = new paketlaundry();
-        pbaru.setNamapaket(namapaket);
-        pbaru.setHarga(harga);
-        pbaru.setKeterangan(keterangan);
+//       paketlaundry pbaru = new paketlaundry();
+//        pbaru.setNamapaket(namapaket);
+//        pbaru.setHarga(harga);
+//        pbaru.setKeterangan(keterangan);
 
 
      
 
-        String sql = "INSERT INTO paketlaundry VALUES ('" + namapaket + "','" + harga + "','" + keterangan + "');";
+        //String sql = "INSERT INTO paketlaundry VALUES ('" + namapaket + "','" + harga + "','" + keterangan + "');";
+        String sql = "INSERT INTO paketlaundry VALUES ('" + paketLaundry.getNamapaket() + "','" + paketLaundry.getHarga() + "','" + paketLaundry.getKeterangan() + "');";
 
 
         try {
