@@ -198,11 +198,11 @@ input.small {
           </tr>
       </table>
         <%
-            String a = request.getParameter("statusa");
+            String a = request.getParameter("status");
             if (a != null){
             out.println("data belum lengkap");
             }
-            String b = request.getParameter("statusb");
+            String b = request.getParameter("status2");
             if (b != null){
             out.println("Paket berhasil diisi");
             }
