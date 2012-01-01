@@ -187,7 +187,7 @@ $(document).pngFix( );
 
 	<!-- start logo -->
 	<div id="logo">
-	<a href=""><img src="images/logoadiprima.png" width="156" height="40" alt="" /></a>
+	<a href=""><img src="" width="156" height="40" alt="" /></a>
 	</div>
 	<!-- end logo -->
 
