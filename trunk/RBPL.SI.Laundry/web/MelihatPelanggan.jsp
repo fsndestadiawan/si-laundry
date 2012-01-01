@@ -4,12 +4,16 @@
     Author     : dika
 --%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+   
+
 <%@ page import="java.sql.*" %>
-<html>
-<head>
-</head>
-<body>
+
 <style type="text/css">
+
+
 <!--
 body {
 	background-color: #DCDCDC;
@@ -150,49 +154,73 @@ input.small {
 
 -->
 </style>
-<br><br>
-<form method="post" name="form">
-<table border="1" align="center">
-<tr><th>Name</th><th>alamat</th><th>Notelp</th><th>username</th></tr>
-<%
-Connection con = null;
-String url = "jdbc:mysql://localhost/";
-String db = "rahasia";
-String driver = "com.mysql.jdbc.Driver";
-String userName ="root";
-String password="";
-
-int sumcount = 0;
-Statement st;
-try{
-Class.forName(driver).newInstance();
-con = DriverManager.getConnection("jdbc:mysql://localhost/rahasia","root", "");
-String query = "select * from data_pelanggan";
-st = con.createStatement();
-ResultSet rs = st.executeQuery(query);
-%>
 
 <%
-while(rs.next()){
+  Connection con=null;
+  //String dbname="jdbc:odbc:rahasia";
+  String status="";
+  ResultSet rs = null;
+  try {
+    Class.forName("com.mysql.jdbc.Driver");
+    con=DriverManager.getConnection("jdbc:mysql://localhost/rahasia", "root", "");
+    if (con==null)
+       status = "gagal";
+    else
+       status = "berhasil";
+  }catch(ClassNotFoundException ex) {
+       status = "Driver Error";
+  }catch(SQLException ex) {
+       status = "gagal";
+  }
+
+  Statement st = con.createStatement();
+  String kueri = "SELECT * FROM data_pelanggan";
+  rs = st.executeQuery(kueri);
 %>
-<tr>
-<td><%=rs.getString("nama")%></td>
-<td><%=rs.getString("alamat")%></td>
-<td><%=rs.getString("notelp")%></td>
-<td><%=rs.getString("username")%></td>
-<td><a href="edit_pelanggan.jsp">Edit</a></td>
-<td><a href="delete.jsp">Delete</a></td>
-</tr>
-<%
-}
-%>
-<%
-}
-catch(Exception e){
-e.printStackTrace();
-}
-%>
-</table>
-</form>
+<html>
+<head>
+<title>Daftar User Pelanggan</title>
+</head>
+
+<body>
+<p align="center"><strong><font size="6">List Pelanggan</font>
+</strong></p>
+<div align="center">
+  <table width="58%" border="1">
+    <tr bordercolor="#666266" bgcolor="#999999">
+      <td width="7%">Username</td>
+      <td width="70%">Password</td>
+      <td width="5%">Nama</td>
+      <td width="5%">Notelp</td>
+      <td width="13%">Alamat</td>
+    </tr>
+    <%
+      if (rs != null){
+         while(rs.next()){
+            String username = rs.getString(2);
+            String password = rs.getString(3);
+            String nama = rs.getString(4);
+            String notelp = rs.getString(5);
+            String alamat = rs.getString(6);
+     %>
+         <tr>
+        <td><%=username%></td>
+        <td><%=password%></td>
+        <td><%=nama%></td>
+        <td><%=notelp%></td>
+        <td><%=alamat%></td>
+      <td><a
+href="edit_pelanggan.jsp?username=<%=username%>&password=<%=password%>&nama=<%=nama%>&notelp=<%=notelp%>&alamat=<%=alamat%>">EDIT</a></td>
+      <td><a
+href="deletePelanggan.jsp?ed_username=<%=username%>">DELETE</a></td>
+    </tr>
+     <% }
+         }
+        st.close();
+        con.close();
+     %>
+  </table>
+
+</div>
 </body>
 </html>
