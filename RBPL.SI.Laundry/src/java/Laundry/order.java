@@ -5,25 +5,10 @@ package Laundry;
  * @author Achmad
  */
 public class order {
-    private String noorder;
     private String paketorder;
     private String waktuambil;
     private String alamatambil;
-
-    /**
-     * @return the noorder
-     */
-    public String getNoorder() {
-        return noorder;
-    }
-
-    /**
-     * @param noorder the noorder to set
-     */
-    public void setNoorder(String noorder) {
-        this.noorder = noorder;
-    }
-
+ 
     /**
      * @return the paketorder
      */

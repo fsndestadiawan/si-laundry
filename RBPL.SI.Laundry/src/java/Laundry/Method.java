@@ -98,13 +98,12 @@ public class Method {
         return result;
     }
 
-    public boolean tambahorder(String noorder, String paketorder,
+    public boolean tambahorder(String paketorder,
             String waktuambil, String alamatambil) {
         boolean result = true;
 
 
         order obaru = new order();
-        obaru.setNoorder(noorder);
         obaru.setPaketorder(paketorder);
         obaru.setWaktuambil(waktuambil);
         obaru.setAlamatambil(alamatambil);
@@ -112,7 +111,7 @@ public class Method {
 
        // hash.put(username, ubaru);
 
-        String sql = "INSERT INTO order_baru VALUES ('" + noorder + "','" + paketorder + "','" + waktuambil + "','" + alamatambil + "');";
+        String sql = "INSERT INTO order_baru (paketorder, waktuambil, alamatambil) VALUES ('" + paketorder + "','" + waktuambil + "','" + alamatambil + "');";
 
 
         try {

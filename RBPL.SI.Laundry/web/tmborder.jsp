@@ -5,18 +5,18 @@
 --%>
 
 <%
-        String noorder = request.getParameter ("noorder");
+        
         String paketorder = request.getParameter ("paketorder");
         String waktuambil = request.getParameter ("waktuambil");
         String alamatambil = request.getParameter ("alamatambil");
 
         Laundry.Method order = new Laundry.Method();
-        if(noorder == "" || paketorder== "" || waktuambil=="" || alamatambil == ""){
+        if(paketorder== "" || waktuambil=="" || alamatambil == ""){
             response.sendRedirect("order.jsp?status=1");
 
         }else{
 
-        order.tambahorder(noorder, paketorder, waktuambil, alamatambil);
+        order.tambahorder(paketorder, waktuambil, alamatambil);
         response.sendRedirect("order.jsp?status2=1");
         }
 
