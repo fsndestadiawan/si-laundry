@@ -174,33 +174,30 @@ input.small {
   <div id="konten">
     <FORM METHOD=POST ACTION="tmborder.jsp">
         <p></p>
-        <table width="327" border="0">
+        <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
           <tr>
-            <td width="98">Nomor Order*</td>
-            <td width="219">:
-            <input name="noorder" type="varchar"  />   </td>
+           
+          <tr>
+            <th valign="top">Paket Order*</th>
+            <th valign="top">:
+            <input name="paketorder" type="text"  /></th>
           </tr>
           <tr>
-            <td>Paket Order*</td>
-            <td>:
-            <input name="paketorder" type="text"  /></td>
-          </tr>
-          <tr>
-            <td>Waktu Ambil*</td>
-            <td>:
-            <input name="waktuambil" type="text" /></td>
+            <th valign="top">Waktu Ambil*</th>
+            <th valign="top">:
+            <input name="waktuambil" type="text" /></th>
           </tr>
              <tr>
-            <td>Alamat Ambil*</td>
-            <td>:
-            <input name="alamatambil" type="text" /></td>
+            <th valign="top">Alamat Ambil*</th>
+            <th valign="top">:
+            <input name="alamatambil" type="text" /></th>
           </tr>
 
           <tr>
-            <td colspan="2"><div align="center">
+            <th valign="top" colspan="2"><div align="center">
               <input type="submit" name="submit" value="Submit" />
               <input type="reset" name="submit2" value="Reset" />
-            </div></td>
+            </div></th>
           </tr>
       </table>
         <%
