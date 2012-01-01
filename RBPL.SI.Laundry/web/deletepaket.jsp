@@ -28,7 +28,6 @@
        status = "gagal";
   }
    Statement st = con.createStatement();
-  //String kueri = "DELETE FROM FILM WHERE FILM.ID="+id;
   String kueri = "DELETE FROM paketlaundry WHERE namapaket='"+namapaket+"'";
   int deleteData = st.executeUpdate(kueri);
 %>

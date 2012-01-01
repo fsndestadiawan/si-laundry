@@ -99,20 +99,11 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
         return result;
     }
 
-    public boolean tambahorder(String paketorder,
-            String waktuambil, String alamatambil) {
-        boolean result = true;
+    
+        public boolean tambahorder (order Order) {
+    boolean result = true;
 
-
-        order obaru = new order();
-        obaru.setPaketorder(paketorder);
-        obaru.setWaktuambil(waktuambil);
-        obaru.setAlamatambil(alamatambil);
-
-
-       // hash.put(username, ubaru);
-
-        String sql = "INSERT INTO order_baru (paketorder, waktuambil, alamatambil) VALUES ('" + paketorder + "','" + waktuambil + "','" + alamatambil + "');";
+        String sql = "INSERT INTO order_baru (paketorder, waktuambil, alamatambil) VALUES ('" + Order.getPaketorder() + "','" + Order.getWaktuambil() + "','" + Order.getAlamatambil() + "');";
 
 
         try {
@@ -181,20 +172,9 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
     }
 
 
-//     public boolean tambahpaket(String namapaket, String harga, String keterangan) {
    public boolean tambahpaket(paketlaundry paketLaundry) {
         boolean result = true;
 
-
-//       paketlaundry pbaru = new paketlaundry();
-//        pbaru.setNamapaket(namapaket);
-//        pbaru.setHarga(harga);
-//        pbaru.setKeterangan(keterangan);
-
-
-     
-
-        //String sql = "INSERT INTO paketlaundry VALUES ('" + namapaket + "','" + harga + "','" + keterangan + "');";
         String sql = "INSERT INTO paketlaundry VALUES ('" + paketLaundry.getNamapaket() + "','" + paketLaundry.getHarga() + "','" + paketLaundry.getKeterangan() + "');";
 
 
@@ -216,6 +196,62 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
         }
         return result;
     }
+
+   //public  paketlaundry[] lihatpaket () {
+     //       boolean result = true;
+
+
+       //     String sql = "SELECT * FROM paketlaundry";
+
+        //Laundry.paketlaundry[] daftarPaketLaundry = null;
+
+         //try {
+           // con = connect.getKoneksi();
+            //st = con.createStatement();
+            //rs = st.executeQuery(sql);
+
+           
+        
+        
+ //if (rs != null){
+   //     int i =0;
+     //    while(rs.next()){
+       //     Laundry.paketlaundry[] paketLaundry = null;
+         //   paketLaundry[i].setNamapaket(rs.getString(1));
+           // paketLaundry[i].setHarga(rs.getString(2));
+            //paketLaundry[i].setKeterangan(rs.getString(3));
+
+            //daftarPaketLaundry[i] = paketLaundry[i];
+            //i++;
+            
+     //}
+       //     }
+
+        //} catch (Exception ex) {
+          //  Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+
+        //} finally {
+          //  try {
+            //    st.close();
+              //  con.close();
+            //} catch (SQLException ex) {
+              //  Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+           // }
+        //}
+        //return daftarPaketLaundry;
+
+   // }
+
+
+
+
+
+
+
+
+
+
+
 public void hapusUser(String username) {
 
         if (cariUser(username)!=null) {

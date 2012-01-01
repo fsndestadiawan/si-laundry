@@ -11,12 +11,18 @@
         String alamatambil = request.getParameter ("alamatambil");
 
         Laundry.Method order = new Laundry.Method();
+        Laundry.order Order = new Laundry.order();
+
+        Order.setPaketorder(paketorder);
+        Order.setWaktuambil(waktuambil);
+        Order.setAlamatambil(alamatambil);
+
         if(paketorder== "" || waktuambil=="" || alamatambil == ""){
             response.sendRedirect("order.jsp?status=1");
 
         }else{
 
-        order.tambahorder(paketorder, waktuambil, alamatambil);
+        order.tambahorder(Order);
         response.sendRedirect("order.jsp?status2=1");
         }
 
