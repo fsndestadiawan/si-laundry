@@ -30,7 +30,8 @@ public class Method {
 
         hash.put(username, ubaru);
 
-        String sql = "INSERT INTO data_pelanggan VALUES ('" + nama + "','" + alamat + "','" + notelp + "','" + username + "','" + password + "');";
+//        String sql = "INSERT INTO data_pelanggan VALUES ('" + nama + "','" + alamat + "','" + notelp + "','" + username + "','" + password + "');";
+String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alamat) VALUES ('" + username + "','" + password+ "','" + nama + "','" + notelp + "','" + alamat+ "');";
 
 
         try {
@@ -133,6 +134,53 @@ public class Method {
         return result;
     }
 
+    public void editUser(String username, String password, String nama, String notelp, String alamat){
+        Pelanggan userx = new Pelanggan();
+
+       if (cariUser(username)!=null) {
+            userx = hash.get(username);
+
+            hash.remove(username);
+        }
+
+        String sql = "update data_pelanggan set " +
+                            "password='"+password+"'"+
+                            ", nama='"+nama+"'"+
+                            ", notelp='"+notelp+"'"+
+                            ", alamat='"+alamat+"'"+
+                            "  username='"+username+"'";
+
+        try {
+            con = connect.getKoneksi();
+            st = con.createStatement();
+            st.executeUpdate(sql);
+        } catch (Exception ex) {
+            Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+
+        } finally {
+            try {
+                st.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+            }finally {
+                try {
+                    st.close();
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        userx.setUsername(username);
+        userx.setPassword(alamat);
+        userx.setNama(nama);
+        userx.setNotelp(notelp);
+        userx.setAlamat(alamat);
+    }
+
+
 //     public boolean tambahpaket(String namapaket, String harga, String keterangan) {
    public boolean tambahpaket(paketlaundry paketLaundry) {
         boolean result = true;
@@ -168,5 +216,29 @@ public class Method {
         }
         return result;
     }
+public void hapusUser(String username) {
 
+        if (cariUser(username)!=null) {
+            hash.remove(username);
+
+            String sql = "DELETE FROM data_pelanggan WHERE username='" + username + "'";
+
+            try {
+                con = connect.getKoneksi();
+                st = con.createStatement();
+                st.execute(sql);
+            } catch (Exception ex) {
+                Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+
+            } finally {
+                try {
+                    st.close();
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+    }
+    }
 }
+

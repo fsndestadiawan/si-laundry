@@ -1,17 +1,30 @@
 <%-- 
-    Document   : DaftarPelanggan
-    Created on : Nov 12, 2011, 2:43:58 PM
+    Document   : edit
+    Created on : Dec 12, 2011, 11:27:29 AM
     Author     : dika
 --%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<%@ page import="java.sql.*" %>
+<%
+
+String username = request.getParameter("username");
+String nama = request.getParameter("nama");
+String alamat = request.getParameter("alamat");
+String password = request.getParameter("password");
+String notelp = request.getParameter("notelp");
+
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Welcome</title>
-
+<title>[Home]</title>
+<link href="theCSS.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
+
+
 <!--
 body {
 	background-color: #DCDCDC;
@@ -152,47 +165,49 @@ input.small {
 
 -->
 </style>
-</head>
 
 <body>
 <div class="body" id="main">
   <div class="style4" id="logo"></div>
   <div id="menu">
     <div align="center">
-      <p><a href="daftarpel.jsp"><span class="style6">Home</span></a> <span class="style7">
       <hr />
       <br />
     </div>
   </div>
-  <div id="judul">Home</div><br />
+  <div id="judul">
+    <div align="center">Home</div>
+  </div><br />
   <div id="konten">
-    <FORM METHOD=POST ACTION="CreatePelanggan.jsp">
-        <p>Register User Pelanggan</p>
-        <table width="327" border="0">
+    <form id="form1" name="form1" method="post" action="ProsesEditPelanggan.jsp">
+      <p align="center">EDIT USER<br />
+      Silahkan Mengganti Profil nda.
+      </p>
+        <table width="327" border="0" align="center">
           <tr>
-            <td width="98">Username*</td>
-            <td width="219">:
-            <input name="username" type="text"  />   </td>
+            <td>Username*</td>
+            <td>:
+              <input name="username" type="text" value="<%=username%>" readonly />   </td>
           </tr>
           <tr>
-            <td>Password*</td>
-            <td>:
-            <input name="password" type="password"  /></td>
+            <td width="98">Password*</td>
+            <td width="219">:
+            <input name="password" type="password" id="password" value="<%=password%>"   /></td>
           </tr>
           <tr>
             <td>Nama*</td>
             <td>:
-            <input name="nama" type="text" /></td>
+            <input name="nama" type="text" id="nama" value="<%=nama%>"  /></td>
           </tr>
-             <tr>
-            <td>NoTelp*</td>
+          <tr>
+            <td>No Telp* </td>
             <td>:
-            <input name="notelp" type="text" /></td>
+              <input name="notelp" type="text"id="notelp" value="<%=notelp%>"  /></td>
           </tr>
           <tr>
             <td>Alamat</td>
             <td>:
-            <input name="alamat" type="text" id="alamat" size="35" /></td>
+            <input name="alamat" type="text"id="alamat" value="<%=alamat%>"  /></td>
           </tr>
           <tr>
             <td colspan="2"><div align="center">
@@ -202,16 +217,10 @@ input.small {
           </tr>
       </table>
         <%
-    String a = request.getParameter("status");
-    if (a != null){
+    String at = request.getParameter("statuss");
+    if (at != null){
     out.println("username already exist or check required field.");
     }
-
-    String b = request.getParameter("statuss");
-    if (b != null){
-    out.println("Username dan Password harus 6-12 karakter.");
-    }
-
 %>
     </form>
 </div>
@@ -221,5 +230,7 @@ input.small {
   </div>
 </div>
 </body>
+
+</head>
 </html>
 
