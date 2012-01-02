@@ -125,21 +125,18 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
         return result;
     }
 
-    public void editUser(String username, String password, String nama, String notelp, String alamat){
+   public boolean editUser(String username, String password, String nama, String notelp, String alamat){
+        boolean result = true;
         Pelanggan userx = new Pelanggan();
 
-       if (cariUser(username)!=null) {
-            userx = hash.get(username);
+        userx.setUsername(username);
+        userx.setPassword(alamat);
+        userx.setNama(nama);
+        userx.setNotelp(notelp);
+        userx.setAlamat(alamat);
 
-            hash.remove(username);
-        }
+       String sql = "UPDATE data_pelanggan SET username='"+username+"',password='"+password+"', nama='"+nama+"', notelp='"+notelp+"', alamat='"+alamat+"' WHERE username='"+username+"'";
 
-        String sql = "update data_pelanggan set " +
-                            "password='"+password+"'"+
-                            ", nama='"+nama+"'"+
-                            ", notelp='"+notelp+"'"+
-                            ", alamat='"+alamat+"'"+
-                            "  username='"+username+"'";
 
         try {
             con = connect.getKoneksi();
@@ -154,23 +151,12 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
                 con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
-            }finally {
-                try {
-                    st.close();
-                    con.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
-                }
+
             }
         }
 
-        userx.setUsername(username);
-        userx.setPassword(alamat);
-        userx.setNama(nama);
-        userx.setNotelp(notelp);
-        userx.setAlamat(alamat);
+     return result;
     }
-
 
    public boolean tambahpaket(paketlaundry paketLaundry) {
         boolean result = true;
@@ -243,19 +229,10 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
    // }
 
 
+public boolean hapusUser(String username) {
 
-
-
-
-
-
-
-
-
-public void hapusUser(String username) {
-
-        if (cariUser(username)!=null) {
-            hash.remove(username);
+       boolean result = true;
+        Pelanggan userx = new Pelanggan();
 
             String sql = "DELETE FROM data_pelanggan WHERE username='" + username + "'";
 
@@ -274,7 +251,8 @@ public void hapusUser(String username) {
                     Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+              return result;
     }
     }
-}
+
 
