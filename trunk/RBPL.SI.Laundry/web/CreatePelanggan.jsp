@@ -23,13 +23,13 @@
         Laundry.Method user = new Laundry.Method();
 
         if(username == "" || password == "" || nama=="" || notelp == ""|| alamat == ""){
-            response.sendRedirect("daftarpel.jsp?status=1");
+            response.sendRedirect("DaftarPelanggan.jsp?status=1");
         }else if(user.cariUser(username)!=null){
-            response.sendRedirect("daftarpel.jsp?status=null");
+            response.sendRedirect("DaftarPelanggan.jsp?status=null");
          } else if (username.length() < 6 || username.length() > 12) {
-            response.sendRedirect("daftarpel.jsp?statuss=1");
+            response.sendRedirect("DaftarPelanggan.jsp?statuss=1");
         } else if (password.length() < 6 || password.length() > 12) {
-            response.sendRedirect("daftarpel.jsp?statuss=1");
+            response.sendRedirect("DaftarPelanggan.jsp?statuss=1");
         }else{
          String x = "Password dan Username anda adalah  " + username +" dan "
                  + ""+ password +" Jangan Sampai Lupa ";

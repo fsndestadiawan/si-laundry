@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : edit
     Created on : Dec 12, 2011, 11:27:29 AM
     Author     : dika
@@ -217,9 +217,13 @@ input.small {
           </tr>
       </table>
         <%
-    String at = request.getParameter("statuss");
-    if (at != null){
-    out.println("username already exist or check required field.");
+    String ba = request.getParameter("status");
+    if (ba != null){
+    out.println(" check required field.");
+    }
+    String bx = request.getParameter("statuss");
+    if (bx != null){
+    out.println("karakter password diantara 6 - 12.");
     }
 %>
     </form>
