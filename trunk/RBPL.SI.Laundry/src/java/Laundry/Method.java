@@ -11,11 +11,69 @@ import java.util.logging.Logger;
 
 public class Method {
 
+    private HashMap<String, Pegawai> mem = new HashMap<String, Pegawai>();
     private HashMap<String, Pelanggan> hash = new HashMap<String, Pelanggan>();
     private Connection con;
     private Statement st;
     private ResultSet rs;
 
+    public boolean tambahPeg(String nip, String password,
+            String nama, String notelp, String alamat) {
+        boolean result = true;
+
+
+        Pegawai ubaru = new Pegawai();
+        ubaru.setNip(nip);
+        ubaru.setPassword(password);
+        ubaru.setNama(nama);
+        ubaru.setNotelp(notelp);
+        ubaru.setAlamat(alamat);
+
+        mem.put(nip, ubaru);
+
+//        String sql = "INSERT INTO data_pelanggan VALUES ('" + nama + "','" + alamat + "','" + notelp + "','" + username + "','" + password + "');";
+String sql = "INSERT INTO data_pegawai (nip, password, nama, notelp, alamat) VALUES ('" + nip + "','" + password+ "','" + nama + "','" + notelp + "','" + alamat+ "');";
+
+
+        try {
+            con = connect.getKoneksi();
+            st = con.createStatement();
+            st.execute(sql);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+
+     public Pegawai cariPeg(String nip) {
+        Pegawai upeg = null;
+
+        if (mem.containsKey(nip)) {
+            upeg = mem.get(nip);
+        } else {
+            String sql = "SELECT * FROM data_pegawai WHERE UPPER(nip) "
+                    + "like UPPER('%" + nip + "%') order by nip";
+
+            try {
+                con = connect.getKoneksi();
+                st = con.createStatement();
+                rs = st.executeQuery(sql);
+                if (rs.next()) {
+                    Pegawai temp = new Pegawai();
+                    temp.setNip(rs.getString("nip"));
+
+                    upeg = temp;
+
+                    mem.put(nip, temp);
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        return upeg;
+    }
     public boolean tambahUser(String username, String password,
             String nama, String notelp, String alamat) {
         boolean result = true;
@@ -228,7 +286,30 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
 
    // }
 
+ public boolean hapusPeg(String nip) {
 
+       boolean result = true;
+        Pegawai peg = new Pegawai();
+
+            String sql = "DELETE FROM data_pegawai WHERE nip='" +nip+ "'";
+
+            try {
+                con = connect.getKoneksi();
+                st = con.createStatement();
+                st.execute(sql);
+            } catch (Exception ex) {
+                Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+
+            } finally {
+                try {
+                    st.close();
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+              return result;
+    }
 public boolean hapusUser(String username) {
 
        boolean result = true;
