@@ -16,7 +16,7 @@
                 //if (user == usercek){
                     //if (pass == passcek){
                     session.setAttribute("ID_Pegawai",user);
-                    response.sendRedirect("HomePegawai.jsp");
+                    response.sendRedirect("index.jsp");
                 } else {
                     response.sendRedirect("LoginPegawai.jsp?eror2=1");
                 }

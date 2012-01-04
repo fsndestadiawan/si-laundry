@@ -162,8 +162,7 @@ input.small {
             <tr>
                 <td><a href="HomePelanggan.jsp">Home</a></td>
                 <td><a href="order.jsp">Transaksi</a></td>
-                <td><a href="ProfilPelanggan">Profil</a></td>
-                <td><a href="">Reward</a></td>
+                <td><a href="ProfilPelanggan.jsp">Profil</a></td>
             </tr>
         </table>
     </body><body>

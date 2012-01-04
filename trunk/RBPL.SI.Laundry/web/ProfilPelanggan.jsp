@@ -4,9 +4,12 @@
     Author     : Andead
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.io.*"%>
+<%@page import="java.lang.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
+
 
 <html>
     <head>
@@ -154,6 +157,28 @@ input.small {
 -->
 </style>
 
+<%
+  Connection con=null;
+  //String dbname="jdbc:odbc:rahasia";
+  String status="";
+  ResultSet rs = null;
+  try {
+    Class.forName("com.mysql.jdbc.Driver");
+    con=DriverManager.getConnection("jdbc:mysql://localhost/rahasia", "root", "");
+    if (con==null)
+       status = "gagal";
+    else
+       status = "berhasil";
+  }catch(ClassNotFoundException ex) {
+       status = "Driver Error";
+  }catch(SQLException ex) {
+       status = "gagal";
+  }
+
+  Statement st = con.createStatement();
+  
+%>
+
     </head>
     <body>
         <table align="center">
@@ -166,15 +191,34 @@ input.small {
                 <td><a href="ProfilPelanggan">Profil</a></td>
                 <td><a href="">Reward</a></td>
             </tr>
+
             <%
-            Laundry.Pelanggan biodata = new Laundry.Pelanggan();
-            %>
-            <tr>
-                <td align="right">Nama</td>
-                <td align="left"><% biodata.getNama(); %>
-            </tr>
+            //String now = session.getAttribute( "ID_Pelanggan" );
+            Laundry.Pelanggan pelanggan = new Laundry.Pelanggan();
+            String now = pelanggan.getUsername();
+            String kueri = "SELECT * FROM data_pelanggan WHERE username=now";
+  rs = st.executeQuery(kueri);
+      if (rs != null){
+         while(rs.next()){
+            String nama = rs.getString(4);
+            String notelp = rs.getString(5);
+            String alamat = rs.getString(6);
+     %>
+
+     <tr>&nbsp;</tr>
+     <tr><td align="right">Nama</td><td><%=nama%></td></tr>
+     <tr><td align="right">No. Telepon</td><td><%=notelp%></td></tr>
+     <tr><td align="right">Alamat</td> <td><%=alamat%></td></tr>
+        
+        
+       
+
+     <% }
+         }
+        st.close();
+        con.close();
+     %>
         </table>
-    </body><body>
-        <h1></h1>
+
     </body>
 </html>

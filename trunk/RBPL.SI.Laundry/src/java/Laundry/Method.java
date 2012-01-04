@@ -4,6 +4,7 @@ package Laundry;
  *
  * @author dika
  */
+
 import java.sql.*;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -395,6 +396,7 @@ public boolean hapusPeg(String nip) {
             }
               return result;
     }
+
 public boolean hapusUser(String username) {
 
        boolean result = true;
