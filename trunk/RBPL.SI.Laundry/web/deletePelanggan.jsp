@@ -4,20 +4,24 @@
     Author     : dika
 --%>
 
+
 <%@page import="javax.swing.JDialog"%>
-<%@page import="javax.swing.JFrame"%>
 <%@page import="javax.swing.JOptionPane"%>
 <%@page import="java.sql.*"%>
 <%
   String username = request.getParameter("ed_username");
 
     Laundry.Method Pelanggan = new Laundry.Method();
-    JFrame parent = new JFrame();
 
-    if (Pelanggan.hapusUser(username)) ;
-    JOptionPane optionPane = new JOptionPane("Continue delete username " + username+"?", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
-    JDialog dialog = optionPane.createDialog(parent, "Delete Akun Pelanggan");
-    dialog.setVisible(true);
+
+        JDialog.setDefaultLookAndFeelDecorated(true);
+    int x = JOptionPane.showConfirmDialog(null, "Do you want to delete "+username+"?", "Deleting ",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (x == JOptionPane.NO_OPTION) {
+      System.out.println("JOptionPane closed");
+    } else if (Pelanggan.hapusUser(username));
+      System.out.println("Yes button clicked");
+
     response.sendRedirect("MelihatPelanggan.jsp");
 
 %>

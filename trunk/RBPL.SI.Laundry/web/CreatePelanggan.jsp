@@ -4,12 +4,7 @@
     Author     : dika
 --%>
 
- 
-<%--
-    Document   : welcome
-    Created on : Nov 13, 2011, 4:21:49 PM
-    Author     : dika
---%>
+
 
 
 <%@page import="javax.swing.JOptionPane"%>

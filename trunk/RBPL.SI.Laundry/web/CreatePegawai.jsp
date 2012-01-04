@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : CreatePegawai
     Created on : Jan 3, 2012, 8:28:47 AM
     Author     : dika
@@ -7,9 +7,11 @@
 <%@page import="javax.swing.JOptionPane"%>
 <%
         String nip = request.getParameter ("nip");
+        int no=Integer.parseInt(nip);
         String password = request.getParameter ("password");
         String nama = request.getParameter ("nama");
         String notelp = request.getParameter ("notelp");
+        int telp =Integer.parseInt(notelp);
         String alamat = request.getParameter ("alamat");
 
         Laundry.Method Pegawai = new Laundry.Method();
