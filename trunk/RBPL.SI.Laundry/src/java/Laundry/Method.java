@@ -31,7 +31,7 @@ public class Method {
 
         mem.put(nip, ubaru);
 
-//        String sql = "INSERT INTO data_pelanggan VALUES ('" + nama + "','" + alamat + "','" + notelp + "','" + username + "','" + password + "');";
+//String sql = "INSERT INTO data_pelanggan VALUES ('" + nama + "','" + alamat + "','" + notelp + "','" + username + "','" + password + "');";
 String sql = "INSERT INTO data_pegawai (nip, password, nama, notelp, alamat) VALUES ('" + nip + "','" + password+ "','" + nama + "','" + notelp + "','" + alamat+ "');";
 
 
@@ -88,7 +88,7 @@ String sql = "INSERT INTO data_pegawai (nip, password, nama, notelp, alamat) VAL
 
         hash.put(username, ubaru);
 
-//        String sql = "INSERT INTO data_pelanggan VALUES ('" + nama + "','" + alamat + "','" + notelp + "','" + username + "','" + password + "');";
+//String sql = "INSERT INTO data_pelanggan VALUES ('" + nama + "','" + alamat + "','" + notelp + "','" + username + "','" + password + "');";
 String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alamat) VALUES ('" + username + "','" + password+ "','" + nama + "','" + notelp + "','" + alamat+ "');";
 
 
@@ -216,6 +216,45 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
      return result;
     }
 
+
+   public boolean editPaket(paketlaundry paketlondry){
+        boolean result = true;
+  
+
+     String sql = "UPDATE paketlaundry SET namapaket='" + paketlondry.getNamapaket() + "', harga='" + paketlondry.getHarga() + "', keterangan='" + paketlondry.getKeterangan() + "' WHERE namapaket='" + paketlondry.getNamapaket() + "'";
+     
+
+
+        try {
+            con = connect.getKoneksi();
+            st = con.createStatement();
+            st.executeUpdate(sql);
+        } catch (Exception ex) {
+            Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+
+        } finally {
+            try {
+                st.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+        }
+
+     return result;
+    }
+
+
+
+
+
+
+
+
+
+
+
    public boolean tambahpaket(paketlaundry paketLaundry) {
         boolean result = true;
 
@@ -240,6 +279,52 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
         }
         return result;
     }
+
+
+   public boolean hapuspaket (paketlaundry paketLondre) {
+       boolean result = true;
+
+      //String sql = "INSERT INTO paketlaundry VALUES ('" + paketLaundry.getNamapaket() + "','" + paketLaundry.getHarga() + "','" + paketLaundry.getKeterangan() + "');";
+        String sql = "DELETE FROM paketlaundry WHERE namapaket='"+paketLondre.getNamapaket()+"'";
+
+        try {
+            con = connect.getKoneksi();
+            st = con.createStatement();
+            st.execute(sql);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+
+        } finally {
+            try {
+                st.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return result;
+    }
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    //public  paketlaundry[] lihatpaket () {
      //       boolean result = true;
@@ -286,7 +371,7 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
 
    // }
 
- public boolean hapusPeg(String nip) {
+public boolean hapusPeg(String nip) {
 
        boolean result = true;
         Pegawai peg = new Pegawai();

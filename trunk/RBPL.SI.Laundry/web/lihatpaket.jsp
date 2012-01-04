@@ -251,6 +251,47 @@ $(document).pngFix( );
 		</li>
 		</ul>
 
+		<div class="nav-divider">&nbsp;</div>
+
+		<ul  class="select"  ><li><a href=""><b>Order Laundry</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<!--[if lte IE 6]><table><tr><td><![endif]-->
+		<div class="select_sub show">
+			<ul class="sub">
+				<li  ><a href="order.jsp">Input Order</a></li>
+				<li  ><a href="order.jsp">View Order</a></li>
+			</ul>
+		</div>
+		</li>
+		</ul>
+		<div class="nav-divider">&nbsp;</div>
+
+		<ul  class="select"  ><li><a href=""><b>Pelanggan</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<!--[if lte IE 6]><table><tr><td><![endif]-->
+		<div class="select_sub show">
+			<ul class="sub">
+				<li  ><a href="DaftarPelanggan.jsp">Registrasi Pelanggan</a></li>
+				<li  ><a href="MelihatPelanggan.jsp">List Pelanggan</a></li>
+			</ul>
+		</div>
+		</li>
+		</ul>
+
+		<div class="nav-divider">&nbsp;</div>
+		<ul  class="select"  ><li><a href=""><b>Pegawai</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<!--[if lte IE 6]><table><tr><td><![endif]-->
+		<div class="select_sub show">
+			<ul class="sub">
+				<li  ><a href="DaftarPegawai.jsp">Registrasi Pegawai</a></li>
+				<li  ><a href="MelihatPegawai.jsp">List Pegawai</a></li>
+
+			</ul>
+		</div>
+		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+		</li>
+		</ul>
+
+
+
 
 
 		<div class="clear"></div>
@@ -275,7 +316,7 @@ $(document).pngFix( );
 	<!--  start page-heading -->
 	<div id="page-heading">
 		<h1>
-		 Edit Paket Laundry		</h1>
+		 Lihat Paket Laundry		</h1>
 	</div>
 	<!-- end page-heading -->
 
@@ -344,15 +385,34 @@ $(document).pngFix( );
 href="editpaket.jsp?ed_namapaket=<%=namapaket%>&ed_harga=<%=harga%>
 &ed_keterangan=<%=keterangan%>">EDIT</a></td>
       <td><a
-href="deletepaket.jsp?ed_namapaket=<%=namapaket%>">DELETE</a></td>
+href="hapuspaket.jsp?ed_namapaket=<%=namapaket%>&ed_harga=<%=harga%>
+&ed_keterangan=<%=keterangan%>">DELETE</a></td>
     </tr>
      <% }
          }
         st.close();
         con.close();
      %>
-  </table>
+</table>
+<%
+            String a = request.getParameter("status");
+            if (a != null){
+            out.println("data belum lengkap");
+            }
+            String b = request.getParameter("status2");
+            if (b != null){
+            out.println("Edit telah berhasil dilaksanakan");
+            }
 
+            String c = request.getParameter("status3");
+            if (c != null){
+            out.println("data belum lengkap");
+            }
+            String d = request.getParameter("status4");
+            if (d != null){
+            out.println(" data paket berhasil dihapus");
+            }
+        %>
 
 </div>		</div>
 		<!--  end content-table-inner ............................................END  -->
