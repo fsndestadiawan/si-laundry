@@ -253,6 +253,47 @@ $(document).pngFix( );
 		</li>
 		</ul>
 
+		<div class="nav-divider">&nbsp;</div>
+
+		<ul  class="select"  ><li><a href=""><b>Order Laundry</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<!--[if lte IE 6]><table><tr><td><![endif]-->
+		<div class="select_sub show">
+			<ul class="sub">
+				<li  ><a href="order.jsp">Input Order</a></li>
+				<li  ><a href="order.jsp">View Order</a></li>
+			</ul>
+		</div>
+		</li>
+		</ul>
+		<div class="nav-divider">&nbsp;</div>
+
+		<ul  class="select"  ><li><a href=""><b>Pelanggan</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<!--[if lte IE 6]><table><tr><td><![endif]-->
+		<div class="select_sub show">
+			<ul class="sub">
+				<li  ><a href="DaftarPelanggan.jsp">Registrasi Pelanggan</a></li>
+				<li  ><a href="MelihatPelanggan.jsp">List Pelanggan</a></li>
+			</ul>
+		</div>
+		</li>
+		</ul>
+
+		<div class="nav-divider">&nbsp;</div>
+		<ul  class="select"  ><li><a href=""><b>Pegawai</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<!--[if lte IE 6]><table><tr><td><![endif]-->
+		<div class="select_sub show">
+			<ul class="sub">
+				<li  ><a href="DaftarPegawai.jsp">Registrasi Pegawai</a></li>
+				<li  ><a href="MelihatPegawai.jsp">List Pegawai</a></li>
+
+			</ul>
+		</div>
+		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+		</li>
+		</ul>
+
+
+
 
 
 		<div class="clear"></div>
@@ -297,37 +338,38 @@ $(document).pngFix( );
 		<div id="table-content">
 
 
+
                     <%
-   /**
-  * Mengambil parameter dari halaman FormMasukanData.html
-  */
+   
+ 
   String namapaket = request.getParameter("ed_namapaket");
   String harga = request.getParameter("ed_harga");
   String keterangan = request.getParameter("ed_keterangan");
+
 %>
-                    <form name="form1" method="post" action="proseseditpaket.jsp">
+<form name="form1" method="post" action="proseseditpaket.jsp">
   <table width="56%" border="1">
   
     <tr>
       <td width="22%">Nama Paket</td>
-      <td width="78%"><input name="tf_namapaket" type="text" readonly id="tf_id" value="<%=namapaket%>" size="50"/></td>
+      <td width="78%"><input name="namapaket" type="text" readonly value="<%=namapaket%>" size="50"/></td>
     </tr>
     <tr>
       <td>Harga</td>
-      <td><input name="tf_harga" type="text" id="tf_harga"
+      <td><input name="harga" type="text"
 value="<%=harga%>" size="50"/></td>
     </tr>
     <tr>
       <td>Keterangan</td>
-      <td><input name="tf_keterangan" type="text" id="tf_keterangan"
+      <td><input name="keterangan" type="text"
 value="<%=keterangan%>" size="50"></td>
     </tr>
     <tr>
-      <td><input  type="submit"  name="Submit"
-value="Submit"></td>
+      <td><input  type="submit"  name="Submit" value="Submit"></td>
       <td>&nbsp;</td>
     </tr>
   </table>
+     
 
 </form>
 

@@ -263,8 +263,8 @@ $(document).pngFix( );
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub show">
 			<ul class="sub">
-				<li  ><a href="">Registrasi Pelanggan</a></li>
-				<li  ><a href="index.php?page=input_stok_perip">List Pelanggan</a></li>
+				<li  ><a href="DaftarPelanggan.jsp">Registrasi Pelanggan</a></li>
+				<li  ><a href="MelihatPelanggan.jsp">List Pelanggan</a></li>
 			</ul>
 		</div>
 		</li>
@@ -275,8 +275,8 @@ $(document).pngFix( );
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub show">
 			<ul class="sub">
-				<li  ><a href="index.php?page=input_perawatan_hs">Registrasi Pegawai</a></li>
-				<li  ><a href="index.php?page=input_per_jaringan">List Pegawai</a></li>
+				<li  ><a href="DaftarPegawai.jsp">Registrasi Pegawai</a></li>
+				<li  ><a href="MelihatPegawai.jsp">List Pegawai</a></li>
 				
 			</ul>
 		</div>

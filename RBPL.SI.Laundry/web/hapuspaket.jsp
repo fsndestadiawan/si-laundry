@@ -1,8 +1,9 @@
-<%--
-    Document   : Order
-    Created on : Nov 14, 2011, 8:59:08 PM
+<%-- 
+    Document   : hapuspaket
+    Created on : Jan 4, 2012, 3:09:28 PM
     Author     : Achmad
 --%>
+
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -316,7 +317,7 @@ $(document).pngFix( );
 	<!--  start page-heading -->
 	<div id="page-heading">
 		<h1>
-		Order Laundry		</h1>
+		 Apakah Data Paket Akan Dihapus?		</h1>
 	</div>
 	<!-- end page-heading -->
 
@@ -335,46 +336,39 @@ $(document).pngFix( );
 		<div id="content-table-inner">
 		<div id="table-content">
 
-         <FORM METHOD=POST ACTION="tmborder.jsp">
-        <p></p>
-        <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
 
 
-          <tr>
-            <th valign="top">Paket Order*</th>
-            <th valign="top">:
-            <input name="paketorder" type="text"  /></th>
-          </tr>
-          <tr>
-            <th valign="top">Waktu Ambil*</th>
-            <th valign="top">:
-            <input name="waktuambil" type="text" /></th>
-          </tr>
-             <tr>
-            <th valign="top">Alamat Ambil*</th>
-            <th valign="top">:
-            <input name="alamatambil" type="text" /></th>
-          </tr>
+                    <%
 
-          <tr>
-            <th valign="top" colspan="2"><div align="center">
-              <input type="submit" name="submit" value="Submit" />
-              <input type="reset" name="submit2" value="Reset" />
-            </div></th>
-          </tr>
-      </table>
-        <%
-            String a = request.getParameter("status");
-            if (a != null){
-            out.println("data belum lengkap");
-            }
-            String b = request.getParameter("status2");
-            if (b != null){
-            out.println("Order telah berhasil dilaksanakan");
-            }
 
-        %>
-    </FORM>
+  String namapaket = request.getParameter("ed_namapaket");
+  String harga = request.getParameter("ed_harga");
+  String keterangan = request.getParameter("ed_keterangan");
+
+%>
+<form name="form1" method="post" action="proseshapuspaket.jsp">
+  <table width="56%" border="1">
+
+    <tr>
+      <td width="22%">Nama Paket</td>
+      <td width="78%"><input name="namapaket" type="text" readonly value="<%=namapaket%>" size="50"/></td>
+    </tr>
+    <tr>
+      <td>Harga</td>
+      <td><input name="harga" type="text" readonly value="<%=harga%>" size="50"/></td>
+    </tr>
+    <tr>
+      <td>Keterangan</td>
+      <td><input name="keterangan" type="text" readonly value="<%=keterangan%>" size="50"></td>
+    </tr>
+    <tr>
+      <td><input  type="submit"  name="Submit" value="Submit"></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+
+
+</form>
 
 </div>		</div>
 		<!--  end content-table-inner ............................................END  -->
