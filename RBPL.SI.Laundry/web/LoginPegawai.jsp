@@ -151,7 +151,7 @@ input.small {
 -->
 </style>
     <body bgcolor="cyan">
-        <form action="TmbLoginPegawai.jsp" name="login" method="post">
+        <form action="TmblLoginPegawai.jsp" name="login" method="post">
             <table>
                 <tr>
                     <td>&nbsp;</td>
