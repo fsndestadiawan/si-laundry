@@ -11,7 +11,7 @@ package org.opennms.web.notification.bobject;
          * author: Arief
          * @version 1.1.1.1
          */
-        public class Notification {
+        public class Notifikasi {
             /**
              * The interval to wait between processing target
              */
