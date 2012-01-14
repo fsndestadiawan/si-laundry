@@ -181,10 +181,10 @@ Connection con=null;
         try {
             con = connect.getKoneksi();
             st = con.createStatement();
-            rs = st.executeQuery("select count(*) as jumlah from data_pegawai where nip='" + nip + "' and password='" + password + "'");
+            rs = st.executeQuery("select count(*) as jmlah from data_pegawai where nip='" + nip + "' and password='" + password + "'");
             rs.next();
-            int jumlah = rs.getInt("jumlah");
-            if (jumlah == 0) {
+            int jmlah = rs.getInt("jmlah");
+            if (jmlah == 0) {
                 return false;
             }
 
