@@ -209,7 +209,7 @@ Connection con=null;
         try {
             con = connect.getKoneksi();
             st = con.createStatement();
-            String sql = "INSERT INTO order_baru (pelanggan, paketorder, waktuambil, alamatambil, tanggal_transaksi) VALUES ('" + Order.getPelanggan() + "','" + Order.getPaketorder() + "','" + Order.getWaktuambil() + "','" + Order.getAlamatambil() + "','" + Order.getTanggal_transaksi() + "')";
+            String sql = "INSERT INTO order_baru (paketorder, waktuambil, alamatambil, pelanggan) VALUES ('" + Order.getPaketorder() + "','" + Order.getWaktuambil() + "','" + Order.getAlamatambil() + "','" + Order.getPelanggan() + "')";
             st.execute(sql);
 
         } catch (Exception ex) {

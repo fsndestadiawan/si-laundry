@@ -188,6 +188,11 @@ input.small {
             <th valign="top">:
             <input name="alamatambil" type="text" /></th>
           </tr>
+           <tr>
+            <th valign="top">Pelanggan</th>
+            <th valign="top">:
+            <input name="pelanggan" type="text" value="<%=now%>" readonly />   </th>
+          </tr>
 
           <tr>
             <th valign="top" colspan="2"><div align="center">
