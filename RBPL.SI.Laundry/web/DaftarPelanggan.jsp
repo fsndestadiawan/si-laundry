@@ -159,12 +159,12 @@ input.small {
   <div class="style4" id="logo"></div>
   <div id="menu">
     <div align="center">
-      <p><a href="daftarpel.jsp"><span class="style6">Home</span></a> <span class="style7">
+      <a href="index.jsp"><span class="style6">Home</span></a> <span class="style7">
       <hr />
       <br />
     </div>
   </div>
-  <div id="judul">Home</div><br />
+  <div id="judul">
   <div id="konten">
     <FORM METHOD=POST ACTION="CreatePelanggan.jsp">
         <p>Register User Pelanggan</p>

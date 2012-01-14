@@ -151,7 +151,7 @@ input.small {
 -->
 </style>
     <body bgcolor="cyan">
-        <form action="TmbLoginPelanggan.jsp" name="login" method="post">
+        <form action="TmblLoginPegawai.jsp" name="login" method="post">
             <table align="center">
                 <tr>
                     <td>&nbsp;</td>
@@ -175,11 +175,11 @@ input.small {
                 </tr>
                 <tr>
                     <td>ID</td>
-                    <td><input type="text" name="ID_pelanggan" ></td>
+                    <td><input type="text" name="ID_pegawai" ></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="pass_pelanggan"></td>
+                    <td><input type="password" name="pass_pegawai"></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
