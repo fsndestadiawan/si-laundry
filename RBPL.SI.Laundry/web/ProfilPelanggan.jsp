@@ -220,10 +220,10 @@ input.small {
      <% }}%>
         </table>
          <table align="center" border="0" cellpadding="1" cellspacing="3">
-            <% String kueri2 = " SELECT tanggal_transaksi , paketorder FROM order_baru ORDER BY noorder DESC LIMIT 5";
+            <% String kueri2 = " SELECT waktuambil , paketorder FROM order_baru ORDER BY noorder DESC LIMIT 5";
             rs = st.executeQuery(kueri2);
             %> <tr>&nbsp;</tr>
-            <tr><td>Tanggal Order</td><td>Paket Order</td></tr> <%
+            <tr width="200px"><td>Waktu Ambil</td><td>Paket Order</td></tr> <%
       if (rs!= null){
          while(rs.next()){
             String namaorder = rs.getString(2);

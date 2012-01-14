@@ -10,7 +10,7 @@
         String paketorder = request.getParameter ("paketorder");
         String waktuambil = request.getParameter ("waktuambil");
         String alamatambil = request.getParameter ("alamatambil");
-        String pel = request.getParameter("now");
+        String pel = request.getParameter ("pelanggan");
 
         Laundry.Method order = new Laundry.Method();
         Laundry.order Order = new Laundry.order();
@@ -20,12 +20,10 @@
         Order.setAlamatambil(alamatambil);
         Order.setPelanggan(pel);
 
-        Date tanggal = new java.util.Date();
-        Order.setTanggal_transaksi(tanggal);
 
         if(paketorder== "" || waktuambil=="" || alamatambil == ""){
             response.sendRedirect("order.jsp?status=1");
-
+           
         }else{
 
         order.tambahorder(Order);
