@@ -155,17 +155,20 @@ input.small {
 </style>
     </head>
     <body>
-        <table align="center">
-            <tr>
-                <td><h1>Selamat Datang <%= session.getAttribute( "ID_Pelanggan" ) %> di E-Lond</h1></td>
-            </tr>
-            <tr>
-                <td><a href="HomePelanggan.jsp">Home</a></td>
-                <td><a href="order.jsp">Transaksi</a></td>
-                <td><a href="ProfilPelanggan.jsp">Profil</a></td>
+        <% String now=(String) session.getAttribute("ID_Pelanggan"); %>
+        <table align="center" border="0" cellpadding="10" cellspacing="1">
+            <tr >
+                <td><h1>Selamat Datang <%=now%> di E-Lond</h1></td>
             </tr>
         </table>
-    </body><body>
-        <h1></h1>
+            <table align="center" border="0" cellpadding="10" cellspacing="1" width="600px">
+            <tr>
+                <td align="center" width="20%"><a href="order.jsp">Transaksi</a></td>
+                <td align="center" width="20%"><a href="ProfilPelanggan.jsp">Profil</a></td>
+                <td align="center" width="20%"><a href="MelihatReward.jsp">Reward</a></td>
+                <td align="center" width="20%"><a href="TmblLogotPl">Logout</a></td>
+            </tr>
+            </table>
+            <h5 align="center"> Selamat Datang dan Silahkan Bertransakasi </h5>
     </body>
 </html>
