@@ -1,15 +1,20 @@
 <%--
-    Document   : login_pel
-    Created on : 12 Nov 11, 16:12:17
+    Document   : home
+    Created on : 12 Nov 11, 16:50:46
     Author     : Andead
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" language ="java" import="java.sql.*"%>
+<%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.io.*"%>
+<%@page import="java.lang.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+   "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-    <style type="text/css">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>E-Lond</title>
+        <style type="text/css">
 <!--
 body {
 	background-color: #DCDCDC;
@@ -150,38 +155,64 @@ input.small {
 
 -->
 </style>
-    <body bgcolor="cyan">
-        <form action="TmbLoginPelanggan.jsp" name="login" method="post">
-            <table align="center">
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>
-                        <%
-                                    String a = request.getParameter("eror1");
-                                    if (a != null) {
-                                        out.println("Isi ID dan Password Dengan Benar.");
-                                    }
-
-                                    String b = request.getParameter("eror2");
-                                    if (b != null) {
-                                        out.println("Periksa Kembali ID dan Password Anda.");
-                                    }
-
-                        %></td>
-                </tr>
-                <tr>
-                    <td>ID</td>
-                    <td><input type="text" name="ID_pelanggan" ></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" name="pass_pelanggan"></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td><input type="submit" name="login" value="Login"></td>
-                </tr>
+    </head>
+    <body>
+        <% String now=(String) session.getAttribute("ID_Pelanggan"); %>
+        <table align="center" border="0" cellpadding="10" cellspacing="1">
+            <tr >
+                <td><h1>Selamat Datang <%=now%> di E-Lond</h1></td>
+            </tr>
+        </table>
+            <table align="center" border="0" cellpadding="10" cellspacing="1" width="600px">
+            <tr>
+                <td align="center" width="20%"><a href="order.jsp">Transaksi</a></td>
+                <td align="center" width="20%"><a href="ProfilPelanggan.jsp">Profil</a></td>
+                <td align="center" width="20%"><a href="MelihatReward.jsp">Reward</a></td>
+                <td align="center" width="20%"><a href="TmblLogotPl">Logout</a></td>
+            </tr>
             </table>
-        </form>
+            <table align="center" border="0" cellpadding="10" cellspacing="1">
+                <%
+  Connection con=null;
+  //String dbname="jdbc:odbc:rahasia";
+  String status="";
+  ResultSet rs = null;
+  ResultSet rs2 = null;
+  try {
+    Class.forName("com.mysql.jdbc.Driver");
+    con=DriverManager.getConnection("jdbc:mysql://localhost/rahasia", "root", "");
+    if (con==null)
+       status = "gagal";
+    else
+       status = "berhasil";
+  }catch(ClassNotFoundException ex) {
+       status = "Driver Error";
+  }catch(SQLException ex) {
+       status = "gagal";
+  }
+
+  Statement st = con.createStatement();
+  String kueri = "SELECT Nama,Poin FROM reward";
+      rs = st.executeQuery(kueri);
+      %> <tr>
+          <tr>&nbsp;</tr>
+          <td width="200px" align="center">Jenis Reward</td><td width="100px" align="center">Poin</td></tr> <%
+      if (rs != null){
+         while(rs.next()){
+            String nama = rs.getString(1);
+            String poin = rs.getString(2);
+     %>
+
+     
+     <tr><td><%=nama%></td><td><%=poin%></td></tr>
+
+
+
+
+     <% }}
+      st.close();
+        con.close();
+   %>
+            </table>
     </body>
 </html>

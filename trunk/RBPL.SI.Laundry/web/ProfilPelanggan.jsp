@@ -162,6 +162,7 @@ input.small {
   //String dbname="jdbc:odbc:rahasia";
   String status="";
   ResultSet rs = null;
+  ResultSet rs2 = null;
   try {
     Class.forName("com.mysql.jdbc.Driver");
     con=DriverManager.getConnection("jdbc:mysql://localhost/rahasia", "root", "");
@@ -176,28 +177,31 @@ input.small {
   }
 
   Statement st = con.createStatement();
-  
+  String now=(String) session.getAttribute("ID_Pelanggan");
 %>
 
     </head>
     <body>
-        <table align="center">
-            <tr>
-                <td><h1>Selamat Datang <%= session.getAttribute( "ID_Pelanggan" ) %> di E-Lond</h1></td>
+        <table align="center" border="0" cellpadding="10" cellspacing="1">
+            <tr >
+                <td><h1>Selamat Datang <%=now%> di E-Lond</h1></td>
             </tr>
+        </table>
+            <table align="center" border="0" cellpadding="10" cellspacing="1" width="600px">
             <tr>
-                <td><a href="HomePelanggan.jsp">Home</a></td>
-                <td><a href="order.jsp">Transaksi</a></td>
-                <td><a href="ProfilPelanggan">Profil</a></td>
-                <td><a href="">Reward</a></td>
+                <td align="center" width="20%"><a href="order.jsp">Transaksi</a></td>
+                <td align="center" width="20%"><a href="ProfilPelanggan.jsp">Profil</a></td>
+                <td align="center" width="20%"><a href="MelihatReward.jsp">Reward</a></td>
+                <td align="center" width="20%"><a href="TmblLogotPl">Logout</a></td>
             </tr>
-
+            </table>
+ <table align="center" border="0" cellpadding="3" cellspacing="1">
             <%
-            //String now = session.getAttribute( "ID_Pelanggan" );
-            Laundry.Pelanggan pelanggan = new Laundry.Pelanggan();
-            String now = pelanggan.getUsername();
-            String kueri = "SELECT * FROM data_pelanggan WHERE username=now";
-  rs = st.executeQuery(kueri);
+            
+            //Laundry.Pelanggan pelanggan = new Laundry.Pelanggan();
+            //String now = pelanggan.getUsername();
+            String kueri = "SELECT * FROM data_pelanggan WHERE username= '" +now+ "'";
+      rs = st.executeQuery(kueri);
       if (rs != null){
          while(rs.next()){
             String nama = rs.getString(4);
@@ -206,19 +210,35 @@ input.small {
      %>
 
      <tr>&nbsp;</tr>
-     <tr><td align="right">Nama</td><td><%=nama%></td></tr>
-     <tr><td align="right">No. Telepon</td><td><%=notelp%></td></tr>
-     <tr><td align="right">Alamat</td> <td><%=alamat%></td></tr>
+     <tr><td align="right">Nama : </td><td><%=nama%></td></tr>
+     <tr><td align="right">No. Telepon : </td><td><%=notelp%></td></tr>
+     <tr><td align="right">Alamat : </td> <td><%=alamat%></td></tr>
         
         
        
 
-     <% }
+     <% }}%>
+        </table>
+         <table align="center" border="0" cellpadding="1" cellspacing="3">
+            <% String kueri2 = " SELECT tanggal_transaksi , paketorder FROM order_baru ORDER BY noorder DESC LIMIT 5";
+            rs = st.executeQuery(kueri2);
+            %> <tr>&nbsp;</tr>
+            <tr><td>Tanggal Order</td><td>Paket Order</td></tr> <%
+      if (rs!= null){
+         while(rs.next()){
+            String namaorder = rs.getString(2);
+            String tanggal = rs.getString(1);
+
+%>
+                 
+     <tr><td><%=tanggal%></td><td><%=namaorder%></td></tr>
+
+            <% }
          }
         st.close();
         con.close();
      %>
-        </table>
+         </table>
 
     </body>
 </html>

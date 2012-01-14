@@ -9,6 +9,8 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class Method {
 
@@ -135,6 +137,22 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
 
     public boolean cekLogin(String username, String password){
         boolean result = true;
+Connection con=null;
+  //String dbname="jdbc:odbc:rahasia";
+  String status="";
+  ResultSet rs = null;
+  try {
+    Class.forName("com.mysql.jdbc.Driver");
+    con=DriverManager.getConnection("jdbc:mysql://localhost/rahasia", "root", "");
+    if (con==null)
+       status = "gagal";
+    else
+       status = "berhasil";
+  }catch(ClassNotFoundException ex) {
+       status = "Driver Error";
+  }catch(SQLException ex) {
+       status = "gagal";
+  }
         try {
             con = connect.getKoneksi();
             st = con.createStatement();
@@ -158,16 +176,40 @@ String sql = "INSERT INTO data_pelanggan (username, password, nama, notelp, alam
         return result;
     }
 
-    
+        public boolean cekLogin2(String nip, String password){
+        boolean result = true;
+        try {
+            con = connect.getKoneksi();
+            st = con.createStatement();
+            rs = st.executeQuery("select count(*) as jumlah from data_pegawai where nip='" + nip + "' and password='" + password + "'");
+            rs.next();
+            int jumlah = rs.getInt("jumlah");
+            if (jumlah == 0) {
+                return false;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            try {
+                st.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Method.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return result;
+    }
         public boolean tambahorder (order Order) {
     boolean result = true;
 
-        String sql = "INSERT INTO order_baru (paketorder, waktuambil, alamatambil) VALUES ('" + Order.getPaketorder() + "','" + Order.getWaktuambil() + "','" + Order.getAlamatambil() + "');";
+        
 
 
         try {
             con = connect.getKoneksi();
             st = con.createStatement();
+            String sql = "INSERT INTO order_baru (pelanggan, paketorder, waktuambil, alamatambil, tanggal_transaksi) VALUES ('" + Order.getPelanggan() + "','" + Order.getPaketorder() + "','" + Order.getWaktuambil() + "','" + Order.getAlamatambil() + "','" + Order.getTanggal_transaksi() + "')";
             st.execute(sql);
 
         } catch (Exception ex) {

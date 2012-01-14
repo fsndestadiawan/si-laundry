@@ -3,8 +3,7 @@
             String user = request.getParameter("ID_pelanggan");
             String pass = request.getParameter("pass_pelanggan");
             //String usercek = request.getParameter("username");
-            //String passcek = request.getParameter("password");
-
+            //String passcek = request.getParameter("password")
 
             Laundry.Method pelanggan = new Laundry.Method();
             //pelanggan.cekUserPass(user,pass);

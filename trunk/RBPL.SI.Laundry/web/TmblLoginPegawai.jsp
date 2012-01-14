@@ -1,18 +1,19 @@
 <%@ page import="java.sql.*" %>
 <%
+
             String user = request.getParameter("ID_pegawai");
             String pass = request.getParameter("pass_pegawai");
             //String usercek = request.getParameter("username");
             //String passcek = request.getParameter("password");
 
 
-            Laundry.Method pelanggan = new Laundry.Method();
+            Laundry.Method pegawai = new Laundry.Method();
             //pelanggan.cekUserPass(user,pass);
 
             if (user == "" || pass == "") {
               response.sendRedirect("LoginPegawai.jsp?eror1=1");
             } else
-                if (pelanggan.cekLogin(user,pass)== true) {
+                if (pegawai.cekLogin2(user,pass)== true) {
                 //if (user == usercek){
                     //if (pass == passcek){
                     session.setAttribute("ID_Pegawai",user);
