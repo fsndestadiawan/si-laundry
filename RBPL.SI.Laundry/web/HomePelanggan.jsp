@@ -166,7 +166,7 @@ input.small {
                 <td align="center" width="20%"><a href="order.jsp">Transaksi</a></td>
                 <td align="center" width="20%"><a href="ProfilPelanggan.jsp">Profil</a></td>
                 <td align="center" width="20%"><a href="MelihatReward.jsp">Reward</a></td>
-                <td align="center" width="20%"><a href="TmblLogotPl">Logout</a></td>
+                <td align="center" width="20%"><a href="TmblLogotPl.jsp">Logout</a></td>
             </tr>
             </table>
             <h5 align="center"> Selamat Datang dan Silahkan Bertransakasi </h5>

@@ -1,11 +1,11 @@
+
+
 <%--
     Document   : Order
     Created on : Nov 14, 2011, 8:59:08 PM
     Author     : Achmad
 --%>
-<%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.io.*"%>
-<%@page import="java.lang.*"%>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -337,65 +337,11 @@ $(document).pngFix( );
 		<div id="content-table-inner">
 		<div id="table-content">
 
-         <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
-            <%
-             Connection con=null;
-  //String dbname="jdbc:odbc:rahasia";
-  String status="";
-  ResultSet rs = null;
-  ResultSet rs2 = null;
-  try {
-    Class.forName("com.mysql.jdbc.Driver");
-    con=DriverManager.getConnection("jdbc:mysql://localhost/rahasia", "root", "");
-    if (con==null)
-       status = "gagal";
-    else
-       status = "berhasil";
-  }catch(ClassNotFoundException ex) {
-       status = "Driver Error";
-  }catch(SQLException ex) {
-       status = "gagal";
-  }
-
-            Statement st = con.createStatement();
-            String now=(String) session.getAttribute("ID_Pelanggan");
-            Laundry.Pelanggan pelanggan = new Laundry.Pelanggan();
-            //String now = pelanggan.getUsername();
-            String kueri = "SELECT * FROM data_pelanggan WHERE username= '" +now+ "'";
-      rs = st.executeQuery(kueri);
-      if (rs != null){
-         while(rs.next()){
-            String nama = rs.getString(4);
-            String notelp = rs.getString(5);
-            String alamat = rs.getString(6);
-     %>
-
-     <tr>&nbsp;</tr>
-     <tr><td align="right">Nama</td><td><%=nama%></td></tr>
-     <tr><td align="right">No. Telepon</td><td><%=notelp%></td></tr>
-     <tr><td align="right">Alamat</td> <td><%=alamat%></td></tr>
-
-
-
-
-
-        </table>
-        <table>
-            <% String kueri2 = " SELECT TOP 5 tanggal_transaksi,paketorder FROM order_baru ORDER BY noorder DESC";
-            rs2 = st.executeQuery(kueri);
-      if (rs2 != null){
-         while(rs.next()){
-            String tanggal = rs.getString(6);
-            String namaorder = rs.getString(3);
-
-%>
-                 <tr>&nbsp;</tr>
-     <tr><td align="right">Tanggal Order</td><td><%=tanggal%></td></tr>
-     <tr><td align="right">Paket Order</td><td><%=namaorder%></td></tr>
-
+         <FORM METHOD=POST ACTION="tmborder.jsp">
+        <p></p>
         <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
 
-
+<% String now=(String) session.getAttribute("ID_Pelanggan"); %>
           <tr>
             <th valign="top">Paket Order*</th>
             <th valign="top">:

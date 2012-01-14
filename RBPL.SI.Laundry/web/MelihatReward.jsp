@@ -168,7 +168,7 @@ input.small {
                 <td align="center" width="20%"><a href="order.jsp">Transaksi</a></td>
                 <td align="center" width="20%"><a href="ProfilPelanggan.jsp">Profil</a></td>
                 <td align="center" width="20%"><a href="MelihatReward.jsp">Reward</a></td>
-                <td align="center" width="20%"><a href="TmblLogotPl">Logout</a></td>
+                <td align="center" width="20%"><a href="TmblLogotPl.jsp">Logout</a></td>
             </tr>
             </table>
             <table align="center" border="0" cellpadding="10" cellspacing="1">
@@ -196,7 +196,7 @@ input.small {
       rs = st.executeQuery(kueri);
       %> <tr>
           <tr>&nbsp;</tr>
-          <td width="200px" align="center">Jenis Reward</td><td width="100px" align="center">Poin</td></tr> <%
+          <td width="200px">Jenis Reward</td><td width="100px">Poin</td></tr> <%
       if (rs != null){
          while(rs.next()){
             String nama = rs.getString(1);

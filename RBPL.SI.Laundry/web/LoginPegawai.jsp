@@ -1,6 +1,6 @@
-<%-- 
-    Document   : LoginPegawai
-    Created on : 06 Des 11, 5:10:56
+<%--
+    Document   : login_pel
+    Created on : 12 Nov 11, 16:12:17
     Author     : Andead
 --%>
 
@@ -151,8 +151,8 @@ input.small {
 -->
 </style>
     <body bgcolor="cyan">
-        <form action="TmblLoginPegawai.jsp" name="login" method="post">
-            <table>
+        <form action="TmbLoginPelanggan.jsp" name="login" method="post">
+            <table align="center">
                 <tr>
                     <td>&nbsp;</td>
                     <td>
@@ -167,19 +167,23 @@ input.small {
                                         out.println("Periksa Kembali ID dan Password Anda.");
                                     }
 
+                                    String c = request.getParameter("notif1");
+                                    if (c != null){
+                                        out.println("Logout sukses !");}
+
                         %></td>
                 </tr>
                 <tr>
                     <td>ID</td>
-                    <td><input type="text" name="ID_pegawai" ></td>
+                    <td><input type="text" name="ID_pelanggan" ></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="pass_pegawai"></td>
+                    <td><input type="password" name="pass_pelanggan"></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td><input type="submit" name="loginpegawai" value="Login"></td>
+                    <td><input type="submit" name="login" value="Login"></td>
                 </tr>
             </table>
         </form>
