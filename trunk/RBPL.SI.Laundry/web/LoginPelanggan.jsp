@@ -167,6 +167,11 @@ input.small {
                                         out.println("Periksa Kembali ID dan Password Anda.");
                                     }
 
+                                    String c = request.getParameter("notif1");
+                                    if (c != null){
+                                        out.println("Logout sukses !");
+                                    }
+
                         %></td>
                 </tr>
                 <tr>
