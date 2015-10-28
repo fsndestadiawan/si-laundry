@@ -1,0 +1,1 @@
+Aplikasi berbasis web-mobile ini ditujukan untuk usaha laundry. Fungsinya adalah pemesanan jasa laundry melalui web-mobile, kemudian transakasi ini akan terekam otomatis di pihak laundry. Hal ini sangat bermanfaat untuk mencatat semua transaksi yang ada.
